@@ -1,0 +1,23 @@
+name: Deploy API to AWS EC2
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploying to EC2
+        run: ssh -i ${{secrets.ACCESS_TOKEN}} ubuntu@${{secrets.HOST_IP}} "cd api && git stash && git pull origin main && cd Quest-DSC-game-api && npm install && npm run build && cd dist && pm2 restart app.js"
