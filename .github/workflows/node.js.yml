@@ -29,6 +29,6 @@ jobs:
     - run: ls
     - run: npm run build --if-present
     - run: ls
-    - run: cd dist
+    - run: cd src
     - run: ls
     - run: pm2 restart ../ecosystem.config.js
