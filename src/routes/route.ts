@@ -1,5 +1,8 @@
 import { Request, Response, Router } from 'express';
-import { addQuestionDetails } from '../controllers/question';
+import {
+  addQuestionDetails,
+  fakeQuestionsDetailsController,
+} from '../controllers/question';
 import { teamRegistration } from '../controllers/registration';
 
 const router = Router();
@@ -9,4 +12,5 @@ router.get('/', (req: Request, res: Response) => {
 
 router.post('/register', teamRegistration);
 router.post('/add/question-details', addQuestionDetails);
+router.get('/fake/questions-details', fakeQuestionsDetailsController);
 export default router;
