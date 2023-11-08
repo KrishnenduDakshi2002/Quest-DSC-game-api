@@ -3,7 +3,10 @@ import {
   addQuestionDetails,
   fakeQuestionsDetailsController,
 } from '../controllers/question';
-import { teamRegistration } from '../controllers/registration';
+import {
+  fakeTeamDetailsController,
+  teamRegistration,
+} from '../controllers/registration';
 
 const router = Router();
 router.get('/', (req: Request, res: Response) => {
@@ -13,4 +16,5 @@ router.get('/', (req: Request, res: Response) => {
 router.post('/register', teamRegistration);
 router.post('/add/question-details', addQuestionDetails);
 router.get('/fake/questions-details', fakeQuestionsDetailsController);
+router.get('/fake/team-details', fakeTeamDetailsController);
 export default router;
